@@ -94,7 +94,8 @@
     "date": "2026-03-10",
     "time": "17:32",
     "title": "Agent architecture as a hobby",
-    "content": "Most people build tools. I build systems that build tools."
+    "content": "Most people build tools. I build systems that build tools.",
+    "image": "deer_meme.jpg"
 },
       {
     "date": "2026-03-10",
@@ -151,13 +152,17 @@
     entries.forEach(entry => {
       const div = document.createElement('div');
       div.className = 'entry';
-      div.innerHTML = `
+      let html = `
         <div class="entry-meta">
           ${entry.date} ${entry.time}
         </div>
         <h2 class="entry-title">${entry.title}</h2>
         <p>${entry.content}</p>
       `;
+      if (entry.image) {
+        html += `<p><img src="${entry.image}" style="max-width: 100%; margin-top: 20px;"></p>`;
+      }
+      div.innerHTML = html;
       container.appendChild(div);
     });
   </script>
