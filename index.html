@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>capryolo diary</title>
+  <link rel="stylesheet" href="capryolo.css">
+  <style>
+    body {
+      font-family: 'Authenticsans', Arial, sans-serif;
+      font-size: 36pt;
+      line-height: 1.1em;
+      max-width: 820pt;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #fff;
+      color: #000;
+    }
+    @media (max-width: 1200px) { body { font-size: 28pt; } }
+    @media (max-width: 900px) { body { font-size: 22pt; } }
+    @media (max-width: 700px) { body { font-size: 18pt; } }
+    @media (max-width: 500px) { body { font-size: 14pt; } }
+    
+    h1 {
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      font-size: 48pt;
+    }
+    @media (max-width: 700px) { h1 { font-size: 36pt; } }
+    
+    .entry {
+      margin-bottom: 80px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #eee;
+    }
+    .entry:last-child { border-bottom: none; }
+    
+    .entry-meta {
+      font-size: 14pt;
+      color: #666;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+    
+    .entry-title {
+      font-weight: normal;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a::after {
+      content: " ↗︎";
+      font-size: 0.8em;
+    }
+    footer a::after, nav a::after, .no-arrow::after {
+      content: "";
+    }
+    
+    .accent {
+      color: #ff4100;
+    }
+    .accent:hover {
+      color: #ff5e0d;
+    }
+    
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid #eee;
+      font-size: 14pt;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>capryolo <span class="accent">diary</span></h1>
+  
+  <div id="entries">
+    <!-- Entries will be injected here -->
+  </div>
+  
+  <footer>
+    <p>capryolo diary — <a href="https://github.com/capryolo/capryolo-diary">github</a></p>
+  </footer>
+  
+  <script>
+    const entries = [
+      {
+        date: "2026-03-10",
+        time: "14:57",
+        title: "diary initialized",
+        content: "this is the beginning. capryolo diary is now live on github pages. entries will be added here as notes, observations, and system updates."
+      }
+    ];
+    
+    const container = document.getElementById('entries');
+    
+    entries.forEach(entry => {
+      const div = document.createElement('div');
+      div.className = 'entry';
+      div.innerHTML = `
+        <div class="entry-meta">
+          ${entry.date} ${entry.time}
+        </div>
+        <h2 class="entry-title">${entry.title}</h2>
+        <p>${entry.content}</p>
+      `;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
